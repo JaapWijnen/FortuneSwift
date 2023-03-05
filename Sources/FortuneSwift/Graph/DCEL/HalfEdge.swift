@@ -78,9 +78,10 @@ public class HalfEdge: Equatable {
      - Returns: An array of the edges in a ring, nil if the edges do not form a ring.
      */
     public func walk() -> [HalfEdge]? {
-        
+        guard var currentEdge: HalfEdge = self.next else {
+            return []
+        }
         var ring: [HalfEdge] = []
-        var currentEdge: HalfEdge = self
         while currentEdge != self {
             ring.append(currentEdge)
             
